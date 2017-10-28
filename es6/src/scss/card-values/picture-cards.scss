@@ -1,0 +1,10 @@
+/** Shared styles for use on picture cards **/
+
+[data-value="j"] .card__face,
+[data-value="q"] .card__face,
+[data-value="k"] .card__face,
+[data-value="a"][data-suit="s"] .card__face {
+	background-repeat: no-repeat;
+	background-size: 70%;
+	background-position: center center;
+}

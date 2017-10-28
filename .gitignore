@@ -1,0 +1,5 @@
+_sourced-images/
+node_modules/
+.vscode/
+dist/
+*.log

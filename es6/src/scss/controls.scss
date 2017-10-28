@@ -1,0 +1,132 @@
+/** Game controls styles **/
+
+@import "core";
+
+.controls {
+	margin: 5% 0 7%;
+	position: relative;
+
+	@media #{$mqLandscape} {
+		& {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			width: 53%;
+			z-index: 3;
+		}
+	}
+
+	&__label {
+		display: block;
+		width: 100%;
+		line-height: 1;
+		font-size: responsive 16px 20px; // Uses postcss-responsive-type: https://www.npmjs.com/package/postcss-responsive-type
+		font-range: $fontRange;
+		text-align: center;
+
+		@media #{$mqLandscape} {
+			& {
+				font-size: responsive 22px 26px; // Uses postcss-responsive-type: https://www.npmjs.com/package/postcss-responsive-type
+				font-range: $fontRange;
+			}
+		}
+	}
+
+	&__wrapper {
+		opacity: 0;
+		visibility: hidden;
+		transition: $opacityTransition;
+	}
+
+	// Progress bar
+	&__progress {
+		height: 3%;
+		position: absolute;
+		background: rgba(#000, 0.3);
+		width: 100%;
+		top: 70%;
+
+		@media #{$mqLandscape} {
+			& {
+				top: 0;
+			}
+		}
+
+		&-bar {
+			background: #fff;
+			width: 0;
+			display: block;
+			height: 100%;
+			transition: 100ms width;
+		}
+	}
+
+	&__btn {
+		font-size: responsive 24px 38px; // Uses postcss-responsive-type: https://www.npmjs.com/package/postcss-responsive-type
+		font-range: $fontRange;
+		appearance: none;
+		outline: none;
+		border: 0;
+		margin: 0;
+		padding: 0;
+		background: transparent;
+		font-family: $systemfonts;
+		color: #fff;
+		font-weight: bold;
+		line-height: 1.75;
+		width: 48%;
+		transition: $opacityTransition;
+
+		&:hover {
+			cursor: pointer;
+		}
+
+		&[disabled][data-disabled] {
+			opacity: 0.25;
+			cursor: default;
+		}
+
+		&-label {
+			border: 2px solid rgba(255, 255, 255, 0.5);
+			padding: 0.5% 0 1%;
+			display: block;
+			transition: $opacityTransition, transform 100ms ease-out;
+			pointer-events: none;
+		}
+
+		&:active:not([data-disabled="1"]) .controls__btn-label {
+			transform: scale(0.9);
+		}
+
+		&-wrapper {
+			display: flex;
+			justify-content: space-between;
+			margin: 5% 0 0;
+		}
+
+		// Start button modifier
+		&_start {
+			position: absolute;
+			left: calc(50% - 25%);
+			bottom: 0;
+			opacity: 1;
+			transition: $opacityTransition;
+
+			@media #{$mqLandscape} {
+				& {
+					bottom: 75%;
+				}
+			}
+		}
+
+		// Replay button modifier
+		&_replay {
+			margin-top: 3%;
+			max-width: 15rem;
+
+			@media #{$mqLandscape} {
+				margin-top: 1%;
+			}
+		}
+	}
+}

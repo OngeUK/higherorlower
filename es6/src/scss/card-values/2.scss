@@ -1,0 +1,29 @@
+/** Grid layout for cards with a value of 2 **/
+
+[data-value="2"] .card__face {
+	.suit {
+		width: 33.3%;
+		margin-left: 33.3%;
+	}
+
+	// Make last symbol upside down
+	:last-child {
+		transform: rotate(180deg);
+	}
+
+	:nth-child(1) {
+		grid-column: 1;
+		grid-row: 1;
+	}
+
+	:nth-child(2) {
+		grid-column: 1;
+		grid-row: 4;
+	}
+
+	// Gutter image
+	&::before,
+	&::after {
+		background-image: url("../../images/value-2.svg");
+	}
+}

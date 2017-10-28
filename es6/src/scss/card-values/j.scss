@@ -1,0 +1,29 @@
+/** Layout for cards with a value of Jack **/
+
+[data-value="j"] .card__face {
+	// Gutter image
+	&::before,
+	&::after {
+		background-image: url("../../images/value-j.svg");
+	}
+}
+
+// King of Spades
+[data-value="j"][data-suit="s"] .card__face {
+	background-image: url("../../images/jack-s.svg");
+}
+
+// King of Clubs
+[data-value="j"][data-suit="c"] .card__face {
+	background-image: url("../../images/jack-c.svg");
+}
+
+// King of Diamonds
+[data-value="j"][data-suit="d"] .card__face {
+	background-image: url("../../images/jack-d.svg");
+}
+
+// King of Diamonds
+[data-value="j"][data-suit="h"] .card__face {
+	background-image: url("../../images/jack-h.svg");
+}

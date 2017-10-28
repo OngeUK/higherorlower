@@ -1,0 +1,88 @@
+/** Playing card styles **/
+
+@import "core";
+
+.card {
+	text-align: center;
+	width: 100%;
+	backface-visibility: hidden;
+	transition: transform 200ms ease-in;
+
+	&__wrapper {
+		padding-top: 140%;
+		position: relative;
+		background: #fff;
+		border-radius: 4%;
+		box-shadow: 0 0 3px #666;
+		opacity: 1;
+		transform: scale(1);
+		transition: transform 300ms, $opacityTransition;
+	}
+
+	// CSS grid for alignment of card symbols
+	&__face {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		padding: 7% 11%;
+		box-sizing: border-box;
+		overflow: hidden;
+		align-items: center;
+		display: grid;
+		//grid-template: repeat(4, [row] 1fr) / repeat(3, [col] 1fr); // Grid has height of zero in Safari, so can't use this method :/
+	}
+
+	// Card back
+	&_back {
+		position: absolute;
+		transform: translate3d(0, -100%, 0) rotateX(0deg) rotateY(360deg);
+
+		&::before {
+			content: "";
+			position: absolute;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			width: 86%;
+			height: 89.66%;
+			margin: 7% 0 0 7%;
+			border-radius: 3%;
+			background-image: url("../images/pattern.svg");
+			background-position: -0.75% -9%;
+			background-size: 22.5% 15.4%;
+			border: 3px solid #e20216;
+			box-sizing: border-box;
+		}
+
+		// Card flip - hide back of card
+		&-hide {
+			transform: translate3d(0, -100%, 0) rotateX(0deg) rotateY(270deg);
+		}
+	}
+
+	// Card flip - face down
+	&_down {
+		transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(270deg);
+	}
+
+	// Card flip - face up
+	&_up {
+		transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(360deg);
+		transition-delay: 200ms;
+		transform-style: ease-out;
+	}
+
+	// Card stacked
+	&_stacked {
+		position: absolute;
+		top: 0;
+	}
+
+	// Card lay animation
+	&_lay {
+		opacity: 0;
+		transform: scale(1.3);
+	}
+}

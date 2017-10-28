@@ -1,0 +1,39 @@
+/** Scoreboard and lives remaining counter **/
+
+@import "core";
+
+.scoreboard {
+	display: flex;
+	width: 100%;
+	font-size: responsive 24px 38px; // Uses postcss-responsive-type: https://www.npmjs.com/package/postcss-responsive-type
+	font-range: $fontRange;
+	font-weight: bold;
+	margin: 1% 0 5%;
+	opacity: 0;
+	transition: $opacityTransition;
+
+	&__score {
+		width: 50%;
+	}
+
+	&__lives {
+		width: 50%;
+		text-align: right;
+	}
+
+	&__item {
+		font-size: 1.3em;
+		display: inline-block;
+		padding-left: 4%;
+	}
+
+	@media #{$mqLandscape} {
+		& {
+			position: absolute;
+			top: 5%;
+			right: 0;
+			width: 53%;
+			z-index: 3;
+		}
+	}
+}

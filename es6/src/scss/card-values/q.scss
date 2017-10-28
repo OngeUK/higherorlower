@@ -1,0 +1,29 @@
+/** Layout for cards with a value of Queen **/
+
+[data-value="q"] .card__face {
+	// Gutter image
+	&::before,
+	&::after {
+		background-image: url("../../images/value-q.svg");
+	}
+}
+
+// Queen of Spades
+[data-value="q"][data-suit="s"] .card__face {
+	background-image: url("../../images/queen-s.svg");
+}
+
+// Queen of Clubs
+[data-value="q"][data-suit="c"] .card__face {
+	background-image: url("../../images/queen-c.svg");
+}
+
+// Queen of Diamonds
+[data-value="q"][data-suit="d"] .card__face {
+	background-image: url("../../images/queen-d.svg");
+}
+
+// Queen of Hearts
+[data-value="q"][data-suit="h"] .card__face {
+	background-image: url("../../images/queen-h.svg");
+}
