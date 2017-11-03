@@ -1,0 +1,46 @@
+/** Grid layout for cards with a value of 6 **/
+
+[data-value="6"] .card__face {
+	// Make last 2 symbols upside down
+	:nth-last-child(-n+2) {
+		transform: rotate(180deg);
+	}
+
+	:nth-child(1) {
+		grid-column: 1;
+		grid-row: 1;
+	}
+
+	:nth-child(2) {
+		grid-column: 3;
+		grid-row: 1;
+	}
+
+	:nth-child(3) {
+		grid-column: 1;
+		grid-row: 2;
+		transform: translate3d(0, 50%, 0);
+	}
+
+	:nth-child(4) {
+		grid-column: 3;
+		grid-row: 2;
+		transform: translate3d(0, 50%, 0);
+	}
+
+	:nth-child(5) {
+		grid-column: 1;
+		grid-row: 4;
+	}
+
+	:nth-child(6) {
+		grid-column: 3;
+		grid-row: 4;
+	}
+
+	// Gutter image
+	&::before,
+	&::after {
+		background-image: url("../../images/value-6.svg");
+	}
+}

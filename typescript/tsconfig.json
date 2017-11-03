@@ -1,0 +1,17 @@
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+		"target": "es5",
+		"module": "esnext",
+		"moduleResolution": "node",
+		"sourceMap": true,
+		"allowJs": true,
+		"lib": ["es6", "dom"]
+	},
+	"include": [
+		"src/**/*"
+	],
+	"exclude": [
+		"node_modules"
+	]
+}

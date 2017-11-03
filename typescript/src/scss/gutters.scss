@@ -1,0 +1,107 @@
+/** Card gutters, where card value and suit is displayed **/
+
+.card {
+	&__wrapper,
+	&__face {
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			display: block;
+			width: 100%;
+			max-width: 12%;
+			height: 100%;
+			padding-top: 3%;
+			box-sizing: border-box;
+		}
+
+		// Card value and suit (top left)
+		&::before {
+			top: 0;
+			left: 0;
+			background-repeat: no-repeat;
+		}
+
+		// Card value and suit (bottom right)
+		&::after {
+			right: 0;
+			bottom: 0;
+			transform: rotate(180deg);
+			background-repeat: no-repeat;
+		}
+	}
+
+	// Background position of suit
+	&__wrapper {
+		&::before,
+		&::after {
+			background-size: 90% auto;
+			background-position: 150% 18%;
+		}
+	}
+
+	// Background position of value
+	&__face {
+		&::before,
+		&::after {
+			background-size: 80% auto;
+			background-position: right 4%;
+		}
+	}
+}
+
+// Gutter image - Hearts
+[data-suit="h"] {
+	& .card__wrapper {
+		&::before,
+		&::after {
+			background-image: url("../images/suit-h.svg");
+		}
+	}
+}
+
+// Gutter image - Diamonds
+[data-suit="d"] {
+	& .card__wrapper {
+		&::before,
+		&::after {
+			background-image: url("../images/suit-d.svg");
+		}
+	}
+}
+
+// Gutter image - Clubs
+[data-suit="c"] {
+	& .card__wrapper {
+		&::before,
+		&::after {
+			background-image: url("../images/suit-c.svg");
+		}
+	}
+
+	// Convert card value to black
+	& .card__face {
+		&::before,
+		&::after {
+			filter: brightness(0) grayscale(100%);
+		}
+	}
+}
+
+// Gutter image - Spades
+[data-suit="s"] {
+	& .card__wrapper {
+		&::before,
+		&::after {
+			background-image: url("../images/suit-s.svg");
+		}
+	}
+
+	// Convert card value to black
+	& .card__face {
+		&::before,
+		&::after {
+			filter: brightness(0) grayscale(100%);
+		}
+	}
+}
