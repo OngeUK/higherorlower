@@ -10,21 +10,12 @@
 
 	"parserOptions": {
 		"sourceType": "module",							// ECMAScript modules
-		"ecmaVersion": 6,								// Set ES6 (useful for React)
-		"ecmaFeatures": {
-			"jsx": true									// Enable React.js JSX
-		}
+		"ecmaVersion": 6								// Set ES6
 	},
 
 	"globals": {										// Add custom globals here
 		"ga": true										// Google Analytics
 	},
-
-	"plugins": [										// e.g. "react"
-	 	"react"
-	],
-
-	"extends": ["plugin:react/recommended"],			// Use recommended React linting rules
 
 	"rules": {
 
@@ -101,7 +92,6 @@
 		"computed-property-spacing": [2, "never"],		// Enforce consistent spacing inside computed property brackets
 		"func-call-spacing": [2, "never"],				// Require or disallow spacing between function identifiers and their invocations
 		"indent": [2, "tab", {"SwitchCase": 1}],		// Enforce consistent indentation
-		"jsx-quotes": [2, "prefer-double"],				// Enforce the consistent use of either double or single quotes in JSX attributes
 		"key-spacing": [2, {							// Enforce consistent spacing between keys and values in object literal properties
 			"beforeColon": false,
 			"afterColon": true

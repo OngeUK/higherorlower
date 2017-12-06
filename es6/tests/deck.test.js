@@ -6,9 +6,9 @@ test("Build and shuffle deck", () => {
 	// Build deck of cards
 	d.buildDeck();
 
-	// Extract deck from generator
 	const deck = [];
 
+	// Extract deck from generator
 	for (const card of d.deck) {
 		deck.push(card);
 	}
@@ -17,5 +17,5 @@ test("Build and shuffle deck", () => {
 	const deckCopy = [...deck];
 
 	expect(deck.length).toBe(52);				// 52 cards in a deck
-	expect(deck).not.toBe(shuffle(deckCopy));	// Shuffled pack should not be same as unsuffled pack
+	expect(deck).not.toBe(shuffle(deckCopy));	// Shuffled pack should not be same as unshuffled pack
 });

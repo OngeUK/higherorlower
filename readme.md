@@ -15,7 +15,7 @@ I have built two versions of this game:
 - [ES6 version](../blob/master/es6)
 - [ES6/TypeScript version](../blob/master/typescript)
 
-Given time, I hope to create versions written in React/Preact and Vue.js as well...
+Given time, I might create versions written in React/Preact and Vue.js as well...
 
 ## Core technologies used ##
 - Webpack 3
