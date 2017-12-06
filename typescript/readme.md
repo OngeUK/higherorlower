@@ -1,14 +1,14 @@
 # Higher or Lower #
 
-## ES6 version  - [play in browser](https://onge.co.uk/higherorlower/es6/) ##
+## TypeScript version  - [play in browser](https://onge.co.uk/higherorlower/typescript/) ##
 
-Source code for ES6 version of _Higher or Lower_
+Source code for TypeScript version of _Higher or Lower_
 
 ## Dependencies ##
 
 - [Node](https://nodejs.org/en/)
 - [Yarn](https://yarnpkg.com/lang/en/)
-- [Jest](https://facebook.github.io/jest/)
+- [ts-jest](https://github.com/kulshekhar/ts-jest)
 
 ## Workflow ##
 

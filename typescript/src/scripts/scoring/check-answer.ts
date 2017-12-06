@@ -8,24 +8,29 @@ import updateScoreBoard from "./scoreboard";
 import gameOver from "../game-over";
 import checkButtonOptions from "../button-management";
 
-
-export default function checkAnswer(e) {
+export default function checkAnswer(e: any): void {
 	// Cache selector
-	const buttons = document.querySelectorAll("[data-btn-type]");
+	const buttons: Element[] = Array.from(document.querySelectorAll("[data-btn-type]"));
 
 	// Disable buttons (to prevent click spamming)
-	[...buttons].forEach((button) => { // Convert to array as you can't use a ForEach loop on a nodelist in Edge
+	buttons.forEach((button: Element) => {
 		button.setAttribute("disabled", "disabled");
 	});
 
 	// Increment counter - this is used for new card z-indexing
 	gs.incrementCounter();
 
+	// TypeScript interface
+	interface Card {
+		value: number;
+		suit: string;
+	}
+
 	// Get next card from generator
-	const nextCard = d.deck.next().value;
+	const nextCard: Card = d.deck.next().value;
 
 	// Store which button was pressed
-	const btnPressed = e.target.dataset.btnType;
+	const btnPressed: string = e.target.dataset.btnType;
 
 	// Work out if player's answer is correct
 	if (btnPressed === "+") { // Clicked Higher
@@ -35,10 +40,10 @@ export default function checkAnswer(e) {
 	}
 
 	// Cache selector
-	const deckWrapper = document.getElementById("deck-wrapper");
+	const deckWrapper: HTMLElement = document.getElementById("deck-wrapper");
 
 	// Create next card DOM element
-	const nextCardDOM = document.createElement("div");
+	const nextCardDOM: HTMLDivElement = document.createElement("div");
 
 	// Add classes and child elements
 	nextCardDOM.setAttribute("class", "card card_stacked");
@@ -60,7 +65,7 @@ export default function checkAnswer(e) {
 		nextCardDOM.children[0].className = "card__wrapper";
 
 		// Once card transition is over
-		nextCardDOM.addEventListener("transitionend", function showCard(e) {
+		nextCardDOM.addEventListener("transitionend", function showCard(e: TransitionEvent): void {
 			if (e.propertyName.includes("transform")) { // propertyName in Edge is -webkit-transform, surprisingly
 				// Update scoreboard
 				updateScoreBoard();
@@ -73,7 +78,7 @@ export default function checkAnswer(e) {
 					gameOver();
 				} else {
 					// Re-enable game controls
-					[...buttons].forEach((button) => { // Convert to array as you can't use a ForEach loop on a nodelist in Edge
+					[...buttons].forEach((button: Element) => { // Convert to array as you can't use a ForEach loop on a nodelist in Edge
 						button.removeAttribute("disabled");
 					});
 

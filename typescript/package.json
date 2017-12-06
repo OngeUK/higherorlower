@@ -4,13 +4,15 @@
 	"author": {
 		"name": "Andrew Burton",
 		"email": "onge.uk@gmail.com",
-		"url": "www.onge.co.uk"
+		"url": "http://www.onge.co.uk/higherorlower/typescript/"
 	},
 	"scripts": {
 		"serve": "webpack-dev-server --inline --hot --open",
 		"build": "jest && rimraf dist && webpack --config webpack.config.prod.js -p --progress && node node_scripts/critical.js"
 	},
 	"devDependencies": {
+		"@types/node": "8.0.51",
+		"awesome-typescript-loader": "3.3.0",
 		"autoprefixer": "7.1.4",
 		"critical": "0.9.1",
 		"cross-env": "5.0.5",
@@ -34,7 +36,8 @@
 		"tslint": "5.8.0",
 		"tslint-loader": "3.5.3",
 		"tslint-microsoft-contrib": "5.0.1",
-		"typescript": "2.5.3",
+		"ts-jest": "21.2.3",
+		"typescript": "2.6.1",
 		"url-loader": "0.5.9",
 		"webpack": "3.6.0",
 		"webpack-dev-server": "2.8.2",
@@ -42,6 +45,15 @@
 	},
 	"jest": {
 		"verbose": true,
-		"setupTestFrameworkScriptFile": "./tests/localStorageMock.js"
+		"setupTestFrameworkScriptFile": "./tests/localStorageMock.js",
+		"moduleFileExtensions": [
+			"ts",
+			"js"
+		],
+		"moduleDirectories": ["node_modules", "src"],
+		"transform": {
+			"^.+\\.ts?$": "ts-jest"
+		},
+		"testRegex": "/tests/.*\\.(ts)$"
 	}
 }

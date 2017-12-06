@@ -7,6 +7,10 @@ const StyleLintPlugin = require("stylelint-webpack-plugin");
 module.exports = {
 	context: path.resolve(__dirname, "./src"),
 
+	resolve: {
+		extensions: [".ts", ".js", ".json"]
+	},
+
 	// webpack entry point
 	entry: {
 		app: "./entry"
@@ -59,20 +63,20 @@ module.exports = {
 	// Loaders
 	module: {
 		rules: [{
-			// ESLint
+			// TSLint
 			enforce: "pre",
-			test: /\.js$/,
-			exclude: /node_modules/,
-			loader: "eslint-loader",
+			test: /\.(ts|tsx)$/,
+			loader: "tslint-loader",
 			options: {
-				failOnError: false
+				emitErrors: true,
+				failOnHint: true
 			}
 		},
 		{
-			// JS, using Babel
-			test: /\.js$/,
+			// TypeScript
+			test: /\.ts?$/,
 			exclude: /node_modules/,
-			loader: "babel-loader"
+			loader: "awesome-typescript-loader"
 		},
 		{
 			// CSS

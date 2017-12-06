@@ -12,6 +12,6 @@
 			"type": "image/png"
 		}
 	],
-	"start_url": "/higherorlower/es6/",
+	"start_url": "/higherorlower/typescript/",
 	"display": "standalone"
 }

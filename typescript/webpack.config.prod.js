@@ -6,10 +6,14 @@ const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 const StyleLintPlugin = require("stylelint-webpack-plugin");
 const WorkboxPlugin = require("workbox-webpack-plugin");
 
-const DIST_DIR = "./dist/higherorlower/es6";
+const DIST_DIR = "./dist/higherorlower/typescript";
 
 module.exports = {
 	context: path.resolve(__dirname, "./src"),
+
+	resolve: {
+		extensions: [".ts", ".js", ".json"]
+	},
 
 	// webpack entry point
 	entry: {
@@ -55,20 +59,21 @@ module.exports = {
 	// Loaders
 	module: {
 		rules: [{
-			// ESLint
+			// TSLint
 			enforce: "pre",
-			test: /\.js$/,
-			exclude: /node_modules/,
-			loader: "eslint-loader",
+			test: /\.(ts|tsx)$/,
+			loader: "tslint-loader",
 			options: {
-				failOnError: true
+				emitErrors: true,
+				failOnHint: true,
+				typeCheck: true
 			}
 		},
 		{
-			// JS, using Babel
-			test: /\.js$/,
+			// TypeScript
+			test: /\.ts?$/,
 			exclude: /node_modules/,
-			loader: "babel-loader"
+			loader: "awesome-typescript-loader"
 		},
 		{
 			// CSS
@@ -98,7 +103,7 @@ module.exports = {
 					loader: "url-loader",
 					options: {
 						limit: 10000,
-						name: "../../higherorlower/es6/images/[name].[ext]",
+						name: "../../higherorlower/typescript/images/[name].[ext]",
 						publicPath: "/"
 					}
 				}

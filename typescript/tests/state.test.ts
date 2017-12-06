@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+/* tslint:disable */
 import {gameState} from "../src/scripts/scoring/game-state";
 
 test("Increment counter", () => {

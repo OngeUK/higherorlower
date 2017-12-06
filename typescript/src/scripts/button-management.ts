@@ -1,7 +1,7 @@
 /** Game button management **/
 
 // Disable buttons for highest and lowest value cards
-export default function checkButtonOptions(nextCardValue) {
+export default function checkButtonOptions(nextCardValue: number): void {
 	const [btnHigher, btnLower] = [document.querySelector("[data-btn-type='+']"), document.querySelector("[data-btn-type='-']")];
 
 	// Card value is 2, then disable lower button

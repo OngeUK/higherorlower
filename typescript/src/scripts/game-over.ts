@@ -8,16 +8,19 @@ import updateScoreBoard from "./scoring/scoreboard";
 import checkButtonOptions from "./button-management";
 import "../scss/game-over.scss";
 
-export default function gameOver() {
+// tslint:disable-next-line:max-func-body-length
+export default function gameOver(): void {
 	// Cache selectors
-	const scoreboard = document.getElementById("scoreboard"),
-		controls = document.getElementById("controls__wrapper"),
-		deckWrapper = document.getElementById("deck-wrapper"),
-		gameOver = document.getElementById("game-over"),
-		aria = document.getElementById("aria");
+	const scoreboard: HTMLElement = document.getElementById("scoreboard"),
+		controls: HTMLElement = document.getElementById("controls__wrapper"),
+		deckWrapper: HTMLElement = document.getElementById("deck-wrapper"),
+		gameOver: HTMLElement = document.getElementById("game-over"),
+		aria: HTMLElement = document.getElementById("aria");
 
 	// Update highest score, where applicable
-	(gs.score >= gs.best) ? gs.updateBestScore(gs.score) : null;
+	if (gs.score >= gs.best) {
+		gs.updateBestScore(gs.score);
+	}
 
 	// Hide scoreboard and game controls
 	scoreboard.setAttribute("style", "opacity: 0; transition-delay: 500ms");
@@ -28,16 +31,16 @@ export default function gameOver() {
 	deckWrapper.setAttribute("style", "will-change: transition, opacity; transition-delay: 1000ms");
 
 	// Update ARIA live content
-	aria.textContent = "Game over";
+	aria.innerHTML = "Game over";
 
 	// Reset deck wrapper once transition is over
-	deckWrapper.addEventListener("transitionend", function reset(e) {
+	deckWrapper.addEventListener("transitionend", function reset(e: TransitionEvent): void {
 		if (e.propertyName === "opacity") {
 			// Remove event listener
 			deckWrapper.removeEventListener("transitionend", reset);
 
 			// Remove all played cards from DOM
-			deckWrapper.textContent = "";
+			deckWrapper.innerHTML = "";
 
 			// Add slight delay to prevent Edge bug where deck reappears for a split second
 			setTimeout(() => {
@@ -66,18 +69,18 @@ export default function gameOver() {
 	`;
 
 	// Cache selector
-	const btnReplay = document.getElementById("replay");
+	const btnReplay: HTMLElement = document.getElementById("replay");
 
 	// Replay game
-	btnReplay.addEventListener("click", function replay() {
+	btnReplay.addEventListener("click", function replay(): void {
 		// Remove replay button event listener
 		btnReplay.removeEventListener("click", replay);
 
 		// Cache selector
-		const buttons = document.querySelectorAll("[data-btn-type]");
+		const buttons: Element[] = Array.from(document.querySelectorAll("[data-btn-type]"));
 
 		// Re-enable game controls
-		[...buttons].forEach((button) => { // Convert to array as you can't use a ForEach loop on a nodelist in Edge
+		buttons.forEach((button: Element) => { // Convert to array as you can't use a ForEach loop on a nodelist in Edge
 			button.removeAttribute("disabled");
 		});
 
@@ -90,8 +93,14 @@ export default function gameOver() {
 		// Build new deck
 		d.buildDeck();
 
+		// TypeScript interface
+		interface Card {
+			value: number;
+			suit: string;
+		}
+
 		// Get first card of new deck
-		const card = d.deck.next().value;
+		const card: Card = d.deck.next().value;
 
 		// Check that higher and lower are valid options
 		checkButtonOptions(card.value);
@@ -106,7 +115,7 @@ export default function gameOver() {
 		`;
 
 		// Cache selector
-		const firstCard = document.getElementById("first-card");
+		const firstCard: HTMLElement = document.getElementById("first-card");
 
 		// Build first card's face
 		buildCardFace(card.value, card.suit, firstCard);
@@ -117,13 +126,13 @@ export default function gameOver() {
 			firstCard.children[0].className = "card__wrapper";
 
 			// Once animation is complete
-			firstCard.addEventListener("transitionend", function animateIn() {
+			firstCard.addEventListener("transitionend", function animateIn(): void {
 				// Remove event listener
 				firstCard.removeEventListener("transitionend", animateIn);
 
 				// Clear game over data
 				gameOver.removeAttribute("style");
-				gameOver.textContent = "";
+				gameOver.innerHTML = "";
 			});
 		}, 100);
 

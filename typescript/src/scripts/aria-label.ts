@@ -1,6 +1,6 @@
 /** Build friendly ARIA labels **/
 
-export default function ariaLabel(value, suit) {
+export default function ariaLabel(value: string, suit: string): string {
 	// Set friendly names for picture cards
 	switch (value) {
 		case "j":
@@ -14,6 +14,8 @@ export default function ariaLabel(value, suit) {
 			break;
 		case "a":
 			value = "Ace";
+		default:
+			value = null;
 	}
 
 	// Set friendly names for card suits
@@ -29,6 +31,8 @@ export default function ariaLabel(value, suit) {
 			break;
 		case "h":
 			suit = "hearts";
+		default:
+			suit = null;
 	}
 
 	return `${value} of ${suit}`;

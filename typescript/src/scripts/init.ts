@@ -26,30 +26,38 @@ import "../scss/card-values/a.scss";
 import "../scss/card-values/picture-cards.scss";
 
 // Initialise game
-export default function init() {
+export default function init(): void {
 	// Cache selectors
-	const btnStart = document.getElementById("start"),
-		cardBack = document.getElementById("back"),
-		firstCard = document.getElementById("first-card"),
-		buttons = document.querySelectorAll("[data-btn-type]"),
-		scoreboard = document.getElementById("scoreboard"),
-		controls = document.getElementById("controls"),
-		controlsWrapper = document.getElementById("controls__wrapper");
+	const btnStart: HTMLElement = document.getElementById("start"),
+		cardBack: HTMLElement = document.getElementById("back"),
+		firstCard: HTMLElement = document.getElementById("first-card"),
+		buttons: NodeListOf<Element> = document.querySelectorAll("[data-btn-type]"),
+		scoreboard: HTMLElement = document.getElementById("scoreboard"),
+		controls: HTMLElement = document.getElementById("controls"),
+		controlsWrapper: HTMLElement = document.getElementById("controls__wrapper");
 
 	// Pre-load all picture cards
-	preloadImages();
+	preloadImages().catch(() => {
+		alert("There was an error loading the game.\nPlease try again");
+	});
 
 	// Build our deck
 	d.buildDeck();
 
+	// TypeScript interface
+	interface Card {
+		value: number;
+		suit: string;
+	}
+
 	// Get first card
-	const card = d.deck.next().value;
+	const card: Card = d.deck.next().value;
 
 	// Build first card's face
 	buildCardFace(card.value, card.suit, firstCard);
 
 	// Start button event listener
-	btnStart.addEventListener("click", function startGame() {
+	btnStart.addEventListener("click", function startGame(): void {
 		// Change classes to fire card flip animation
 		cardBack.setAttribute("class", "card card_back card_back-hide");
 		firstCard.setAttribute("class", "card card_up");
@@ -64,7 +72,7 @@ export default function init() {
 		controlsWrapper.setAttribute("style", "visibility: visible");
 
 		// When first card transition ends
-		firstCard.addEventListener("transitionend", function firstCard() {
+		firstCard.addEventListener("transitionend", function firstCard(): void {
 			// Fade in game elements
 			controlsWrapper.setAttribute("style", `${controlsWrapper.getAttribute("style")}; opacity: 1;`);
 			scoreboard.setAttribute("style", "opacity: 1;");
@@ -84,7 +92,7 @@ export default function init() {
 	});
 
 	// Higher/Lower button event listeners
-	[...buttons].forEach((button) => { // Convert to array as you can't use a ForEach loop on a nodelist in Edge
+	Array.from(buttons).forEach((button: Element) => { // Convert to array as you can't use a ForEach loop on a nodelist in Edge
 		button.addEventListener("click", checkAnswer);
 	});
 }

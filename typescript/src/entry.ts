@@ -1,18 +1,12 @@
 /** Entry point TypeScript file **/
 
-// TO DO - get linting to work
-// TO DO - add AT loader to process ts files
-// TO DO - Update all code to TS specifications
-// TO DO - get serve working
-// TO DO - get build working
-
 // Register Service Worker
 if ("serviceWorker" in navigator) {
-	window.addEventListener("load", function() {
-		navigator.serviceWorker.register("sw.js").then(function(registration) {
+	window.addEventListener("load", () => {
+		navigator.serviceWorker.register("sw.js").then((registration: ServiceWorkerRegistration) => {
 		// Registration was successful
-			console.log("ServiceWorker registration successful with scope: ", registration.scope);
-		}, function(err) {
+			console.log("ServiceWorker registration successful");
+		}, (err: Error) => {
 		// registration failed :(
 			console.log("ServiceWorker registration failed: ", err);
 		});
