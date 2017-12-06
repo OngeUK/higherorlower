@@ -1,0 +1,17 @@
+{
+	"short_name": "Higher or Lower",
+	"name": "Higher or Lower",
+	"description": "Higher or Lower card game. What's the best score you can get?",
+	"background_color": "#247e12",
+	"theme_color": "#247e12",
+	"lang": "en-GB",
+	"icons": [
+		{
+			"src": "images/icon-logo.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	],
+	"start_url": "/higherorlower/typescript/",
+	"display": "standalone"
+}

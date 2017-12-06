@@ -1,0 +1,52 @@
+/** Layout for cards with a value of Ace **/
+
+[data-value="a"] .card__face {
+	:first-child {
+		grid-column: 1;
+		grid-row: 1;
+	}
+
+	// Gutter image
+	&::before,
+	&::after {
+		background-image: url("../../images/value-a.svg");
+	}
+}
+
+// Only use the transform on grid enabled browsers
+@supports (display: grid) {
+	[data-value="a"] .card__face {
+		:first-child {
+			transform: translate3d(0, 50%, 0);
+		}
+	}
+}
+
+// Ace of spades
+[data-value="a"][data-suit="s"] .card__face {
+	background-image: url("../../images/ace-s.svg");
+}
+
+// Ace of diamonds
+[data-value="a"][data-suit="d"] .card__face {
+	background-image: url("../../images/suit-d.svg");
+}
+
+// Ace of clubs
+[data-value="a"][data-suit="c"] .card__face {
+	background-image: url("../../images/suit-c.svg");
+}
+
+// Ace of hearts
+[data-value="a"][data-suit="h"] .card__face {
+	background-image: url("../../images/suit-h.svg");
+}
+
+// Position of suit
+[data-value="a"][data-suit="d"] .card__face,
+[data-value="a"][data-suit="c"] .card__face,
+[data-value="a"][data-suit="h"] .card__face {
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 26% auto;
+}

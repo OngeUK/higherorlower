@@ -1,0 +1,30 @@
+/** Layout for cards with a value of King **/
+
+// Gutter letters
+[data-value="k"] .card__face {
+	// Gutter image
+	&::before,
+	&::after {
+		background-image: url("../../images/value-k.svg");
+	}
+}
+
+// King of Spades
+[data-value="k"][data-suit="s"] .card__face {
+	background-image: url("../../images/king-s.svg");
+}
+
+// King of Clubs
+[data-value="k"][data-suit="c"] .card__face {
+	background-image: url("../../images/king-c.svg");
+}
+
+// King of Diamonds
+[data-value="k"][data-suit="d"] .card__face {
+	background-image: url("../../images/king-d.svg");
+}
+
+// King of Hearts
+[data-value="k"][data-suit="h"] .card__face {
+	background-image: url("../../images/king-h.svg");
+}
