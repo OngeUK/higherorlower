@@ -12,8 +12,8 @@ I built this to try out new things, especially CSS3 Grid which I've used to buil
 
 I have built two versions of this game:
 
-- [ES6 version](/OngeUK/higherorlower/tree/master/es6)
-- [ES6/TypeScript version](/OngeUK/higherorlower/tree/master/typescript)
+- [ES6 version](https://github.com/OngeUK/higherorlower/tree/master/es6)
+- [ES6/TypeScript version](https://github.com/OngeUK/higherorlower/tree/master/typescript)
 
 Given time, I might create versions written in React/Preact and Vue.js as well...
 
