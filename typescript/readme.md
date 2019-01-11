@@ -1,6 +1,6 @@
 # Higher or Lower #
 
-## TypeScript version  - [play in browser](https://onge.co.uk/higherorlower/typescript/) ##
+## TypeScript version  - [play in browser](https://onge.uk/higherorlower/typescript/) ##
 
 Source code for TypeScript version of _Higher or Lower_
 

@@ -4,7 +4,7 @@
 	"author": {
 		"name": "Andrew Burton",
 		"email": "onge.uk@gmail.com",
-		"url": "http://www.onge.co.uk/higherorlower/typescript/"
+		"url": "http://www.onge.uk/higherorlower/typescript/"
 	},
 	"scripts": {
 		"serve": "webpack-dev-server --inline --hot --open",

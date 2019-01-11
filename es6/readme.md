@@ -1,6 +1,6 @@
 # Higher or Lower #
 
-## ES6 version  - [play in browser](https://onge.co.uk/higherorlower/es6/) ##
+## ES6 version  - [play in browser](https://onge.uk/higherorlower/es6/) ##
 
 Source code for ES6 version of _Higher or Lower_
 
